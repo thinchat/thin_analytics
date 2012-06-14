@@ -47,8 +47,13 @@ GEM
       thor (>= 0.14.6)
     guard-rspec (1.0.1)
       guard (>= 1.1)
+    highcharts (0.0.3)
+      ice_cube (= 0.7.7)
+    highcharts-rails (2.2.4)
+      railties (~> 3.1)
     hike (1.2.1)
     i18n (0.6.0)
+    ice_cube (0.7.7)
     journey (1.0.3)
     jquery-rails (2.0.2)
       railties (>= 3.2.0, < 5.0)
@@ -134,6 +139,8 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 3.2.1)
   guard-rspec
+  highcharts
+  highcharts-rails (~> 2.2.1)
   jquery-rails
   rails (= 3.2.3)
   rspec-rails
