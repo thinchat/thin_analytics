@@ -44,8 +44,18 @@ $(document).ready ->
     {x: time - 2000, y: 220}
     {x: time - 1000, y: 220}
   ]
-  graph = new Graph("Users", "container", 150, data, updateUserCount)
-  graph2 = new Graph("Rooms", "container2", 150, data, updateRoomCount)
+  hourly_users_graph = new Graph("Users", "hourly_users", 100, data, updateUserCount)
+  hourly_rooms_graph = new Graph("Rooms", "hourly_rooms", 100, data, updateRoomCount)
+  hourly_response_time_graph = new Graph("Response Time", "hourly_response_time", 100, data, updateRoomCount)
 
-  graph.draw()
-  graph2.draw()
+  daily_users_graph = new Graph("Users", "daily_users", 100, data, updateUserCount)
+  daily_rooms_graph = new Graph("Rooms", "daily_rooms", 100, data, updateRoomCount)
+  daily_response_time_graph = new Graph("Response Time", "daily_response_time", 100, data, updateRoomCount)
+
+  hourly_users_graph.draw()
+  hourly_rooms_graph.draw()
+  hourly_response_time_graph.draw()
+
+  daily_users_graph.draw()
+  daily_rooms_graph.draw()
+  daily_response_time_graph.draw()

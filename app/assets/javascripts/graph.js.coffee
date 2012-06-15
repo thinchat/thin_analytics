@@ -15,7 +15,7 @@ class @Graph
               x = (new Date()).getTime()
               y = updateCount()
               series.addPoint [ x, y ], true, true
-            ), 1000
+            ), 2000
 
       title:
         text: @title

@@ -1,2 +1,27 @@
-<div id="container" style="height:410px;"></div>
-<div id="container2" style="height:410px;"></div>
+<style>
+  div#analytics_container {
+    width:1260px;
+    margin:auto;
+  }
+
+  div#analytics_container div.graph {
+    width:360px;
+    height:280px;
+    float:left;
+    margin:20px;
+  }
+</style>
+
+<div id="analytics_container">
+  <div id="hourly">
+    <div class='graph' id="hourly_users"></div>
+    <div class='graph' id="hourly_rooms"></div>
+    <div class='graph' id="hourly_response_time"></div>
+  </div>
+
+  <div id="daily">
+    <div class='graph' id="daily_users"></div>
+    <div class='graph' id="daily_rooms"></div>
+    <div class='graph' id="daily_response_time"></div>
+  </div>
+</div>
