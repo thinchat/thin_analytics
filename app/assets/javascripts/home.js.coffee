@@ -78,8 +78,10 @@ $(document).ready ->
   active = fetchRoomCountHistory()
   pending = fetchRoomCountHistory()
 
-  hourly_users_graph = new Graph("Users", "hourly_users", "guests", "square", "#ff8400", "agents", "diamond", "#5837e6", 100, guests, agents, updateAgentCount, updateGuestCount)
-  hourly_rooms_graph = new Graph("Rooms", "hourly_rooms", "active", "square", "#309e00", "pending", "diamond", "#f7e800", 100, active, pending, updateActiveCount, updatePendingCount)
+  hourly_users_graph = new Graph("Users", "users_10_seconds", "guests", "square", "#ff8400", "agents", "diamond", "#5837e6", 100, guests, agents, updateAgentCount, updateGuestCount)
+  hourly_rooms_graph = new Graph("Rooms", "rooms_10_seconds", "active", "square", "#309e00", "pending", "diamond", "#f7e800", 100, active, pending, updateActiveCount, updatePendingCount)
+  daily_users_graph = new Graph("Users", "users_1_minute", "guests", "square", "#ff8400", "agents", "diamond", "#5837e6", 100, guests, agents, updateAgentCount, updateGuestCount)
+  daily_rooms_graph = new Graph("Rooms", "rooms_1_minute", "active", "square", "#309e00", "pending", "diamond", "#f7e800", 100, active, pending, updateActiveCount, updatePendingCount)
   # hourly_response_time_graph = new Graph("Response Time", "hourly_response_time", 100, users, agents, updateRoomCount)
 
   # daily_users_graph = new Graph("Users", "daily_users", 100, users, agents, updateUserCount)
@@ -90,6 +92,6 @@ $(document).ready ->
   hourly_rooms_graph.draw()
   # hourly_response_time_graph.draw()
 
-  # daily_users_graph.draw()
-  # daily_rooms_graph.draw()
+  daily_users_graph.draw()
+  daily_rooms_graph.draw()
   # daily_response_time_graph.draw()
