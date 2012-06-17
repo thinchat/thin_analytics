@@ -1,1 +1,1 @@
-config/deploy/thin_analytics_deploy.rb
+deploy/thin_analytics_deploy.rb
