@@ -1,6 +1,3 @@
-//= require highcharts
-//= require highcharts/themes/grid
-
 $(document).ready ->
   updateAgentCount = ->
     count = 0
