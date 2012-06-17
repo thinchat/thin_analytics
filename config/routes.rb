@@ -1,8 +1,7 @@
 ThinAnalytics::Application.routes.draw do
-  get "home/index"
-  root :to => 'home#index'
-
   scope '/analytics' do
+    get "home/index"
+    root :to => 'home#index'
     match '/users/agents', :to => 'users#agents'
     match '/users/guests', :to => 'users#guests'
     match '/users/history', :to => 'users#history'
