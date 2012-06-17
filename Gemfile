@@ -8,6 +8,7 @@ gem 'resque'
 gem 'highcharts-rails'
 gem 'eventmachine'
 gem 'redis'
+gem 'capistrano'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
