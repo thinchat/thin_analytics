@@ -1,0 +1,3 @@
+[submodule "config/deploy"]
+	path = config/deploy
+	url = git@github.com:thinchat/thin_cap.git
