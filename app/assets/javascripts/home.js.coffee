@@ -72,26 +72,42 @@ $(document).ready ->
     )
     history
 
-  time = new Date().getTime()
-  agents = fetchUserCountHistory()
-  guests = fetchUserCountHistory()
-  active = fetchRoomCountHistory()
-  pending = fetchRoomCountHistory()
+  fetchUserCountLongHistory = ->
+    history = []
+    $.ajax('/analytics/users/longhistory',
+      async: false
+      dataType: 'json'
+      success: (data) ->
+        history = data.history
+    )
+    history
 
-  hourly_users_graph = new Graph("Users", "users_10_seconds", "guests", "square", "#ff8400", "agents", "diamond", "#5837e6", 100, guests, agents, updateAgentCount, updateGuestCount)
-  hourly_rooms_graph = new Graph("Rooms", "rooms_10_seconds", "active", "square", "#309e00", "pending", "diamond", "#f7e800", 100, active, pending, updateActiveCount, updatePendingCount)
-  daily_users_graph = new Graph("Users", "users_1_minute", "guests", "square", "#ff8400", "agents", "diamond", "#5837e6", 100, guests, agents, updateAgentCount, updateGuestCount)
-  daily_rooms_graph = new Graph("Rooms", "rooms_1_minute", "active", "square", "#309e00", "pending", "diamond", "#f7e800", 100, active, pending, updateActiveCount, updatePendingCount)
-  # hourly_response_time_graph = new Graph("Response Time", "hourly_response_time", 100, users, agents, updateRoomCount)
+  fetchRoomCountLongHistory = ->
+    history = []
+    $.ajax('/analytics/users/longhistory',
+      async: false
+      dataType: 'json'
+      success: (data) ->
+        history = data.history
+    )
+    history
 
-  # daily_users_graph = new Graph("Users", "daily_users", 100, users, agents, updateUserCount)
-  # daily_rooms_graph = new Graph("Rooms", "daily_rooms", 100, users, agents, updateRoomCount)
-  # daily_response_time_graph = new Graph("Response Time", "daily_response_time", 100, users, agents, updateRoomCount)
+  agents_history = fetchUserCountHistory()
+  guests_history = fetchUserCountHistory()
+  active_history = fetchRoomCountHistory()
+  pending_history = fetchRoomCountHistory()
 
-  hourly_users_graph.draw()
-  hourly_rooms_graph.draw()
-  # hourly_response_time_graph.draw()
+  agents_long_history = fetchUserCountLongHistory()
+  guests_long_history = fetchUserCountLongHistory()
+  active_long_history = fetchRoomCountLongHistory()
+  pending_long_history = fetchRoomCountLongHistory()
 
-  daily_users_graph.draw()
-  daily_rooms_graph.draw()
-  # daily_response_time_graph.draw()
+  ten_second_users_graph = new Graph("Users by Type (10 seconds)", "users_10_seconds", "guests", "square", "#ff8400", "agents", "diamond", "#5837e6", 100, guests_history, agents_history, updateAgentCount, updateGuestCount)
+  ten_second_rooms_graph = new Graph("Rooms by Status (10 seconds)", "rooms_10_seconds", "active", "square", "#309e00", "pending", "diamond", "#f7e800", 100, active_history, pending_history, updateActiveCount, updatePendingCount)
+  sixty_second_users_graph = new Graph("Users by Type (1 minute)", "users_1_minute", "guests", "square", "#ff8400", "agents", "diamond", "#5837e6", 100, guests_long_history, agents_long_history, updateAgentCount, updateGuestCount)
+  sixty_second_rooms_graph = new Graph("Rooms by Status (1 minute)", "rooms_1_minute", "active", "square", "#309e00", "pending", "diamond", "#f7e800", 100, active_long_history, pending_long_history, updateActiveCount, updatePendingCount)
+
+  ten_second_users_graph.draw()
+  ten_second_rooms_graph.draw()
+  sixty_second_users_graph.draw()
+  sixty_second_rooms_graph.draw()

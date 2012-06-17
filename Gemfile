@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'hashie'
 gem 'rails', '3.2.3'
 gem 'sqlite3'
 gem 'jquery-rails'
