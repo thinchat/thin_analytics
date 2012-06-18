@@ -5,7 +5,7 @@ module ThinHeartbeat
     attr_accessor :redis
 
     def initialize(host, password = nil)
-      @redis = Redis.new(:host => host, :port => 6379)
+      @redis = REDIS
       @redis.auth(password) if password
     end
 
