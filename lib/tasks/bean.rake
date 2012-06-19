@@ -33,6 +33,7 @@ end
 
 desc "Start the bean counter"
 task :bean => :environment do
+  File.open(ENV['PIDFILE'], 'w') { |f| f << Process.pid } if ENV['PIDFILE']
   while true
     update_guest_count!
     update_agent_count!
