@@ -79,6 +79,35 @@ God.watch do |w|
   end
 end
 
+God.watch do |w|
+  w.name = "analytics_bean"
+  w.start = "bundle exec rake bean"
+  w.dir = rails_root
+  w.pid_file = "#{rails_root}/tmp/pids/#{w.name}.pid"
+  w.env = {'PIDFILE' => w.pid_file}
+  w.keepalive
+  w.interval = 10.seconds
+  w.log = "/var/log/god/#{w.name}.log"
+  w.err_log = "/var/log/god/#{w.name}_error.log"
+
+  # determine when process has finished starting
+  w.transition([:start, :restart], :up) do |on|
+    on.condition(:process_running) do |c|
+      c.running = true
+      c.interval = 5.seconds
+      c.notify = 'ha_campfire'
+    end
+
+    # failsafe
+    on.condition(:tries) do |c|
+      c.times = 5
+      c.transition = :start
+      c.interval = 5.seconds
+      c.notify = 'ha_campfire'
+    end
+  end
+end
+
 God::Contacts::Campfire.defaults do |d|
   d.subdomain = 'hungrymachine'
   d.token     = CAMPFIRE_TOKEN
