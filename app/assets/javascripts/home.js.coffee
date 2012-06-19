@@ -102,9 +102,9 @@ $(document).ready ->
   active_long_history = fetchRoomCountLongHistory()
   pending_long_history = fetchRoomCountLongHistory()
 
-  ten_second_users_graph = new Graph("Users by Type (10 seconds)", "users_10_seconds", "guests", "square", "#ff8400", "agents", "diamond", "#5837e6", 100, guests_history, agents_history, updateAgentCount, updateGuestCount)
+  ten_second_users_graph = new Graph("Users by Type (10 seconds)", "users_10_seconds", "agents", "square", "#ff8400", "guests", "diamond", "#5837e6", 100, agents_history, guests_history, updateAgentCount, updateGuestCount)
   ten_second_rooms_graph = new Graph("Rooms by Status (10 seconds)", "rooms_10_seconds", "active", "square", "#309e00", "pending", "diamond", "#f7e800", 100, active_history, pending_history, updateActiveCount, updatePendingCount)
-  sixty_second_users_graph = new Graph("Users by Type (1 minute)", "users_1_minute", "guests", "square", "#ff8400", "agents", "diamond", "#5837e6", 100, guests_long_history, agents_long_history, updateAgentCount, updateGuestCount)
+  sixty_second_users_graph = new Graph("Users by Type (1 minute)", "users_1_minute", "agents", "square", "#ff8400", "guests", "diamond", "#5837e6", 100, agents_long_history, guests_long_history, updateAgentCount, updateGuestCount)
   sixty_second_rooms_graph = new Graph("Rooms by Status (1 minute)", "rooms_1_minute", "active", "square", "#309e00", "pending", "diamond", "#f7e800", 100, active_long_history, pending_long_history, updateActiveCount, updatePendingCount)
 
   ten_second_users_graph.draw()
